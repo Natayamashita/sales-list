@@ -2,6 +2,7 @@ import { useState } from "react";
 import { mockVendas } from "./mockData";
 import { ModalSalesEdit } from "./ModalSalesEdit";
 import type { Venda } from "./types";
+import { Button } from "@/components/ui/button";
 
 const SalesList = () => {
   const [vendas, setVendas] = useState<Venda[]>(mockVendas);
@@ -26,14 +27,17 @@ const SalesList = () => {
   };
 
   return (
-    <div>
+    <div className="bg-neutral-200">
       <h1 className="text-2xl font-bold mb-4">Lista de Vendas</h1>
-      <button
-        onClick={() => window.location.href = "/nova-venda"}
-        className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
-      >
-        Nova Venda
-      </button>
+      
+      <div className="flex flex-start">
+        <Button
+          onClick={() => window.location.href = "/nova-venda"}
+          className="w-30 h-12 mb-4 ml-2"
+          >
+          Nova Venda
+        </Button>
+      </div>
 
       <ul className="space-y-2">
         {vendas.map((sale) => (
