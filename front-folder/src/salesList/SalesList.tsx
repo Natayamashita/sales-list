@@ -62,13 +62,13 @@ const SalesList = () => {
         </Button>
       </div>
       <Carousel opts={{ loop: true }} setApi={setApi} className="w-120 border-1 bg-zinc-800/20 border-zinc-900 p-2 mb-4 rounded-xl hover:bg-zinc-900/20">
-        <CarouselContent className=" cursor-grab">
+        <CarouselContent className=" basis-0 cursor-grab grow-0">
           {vendas.map((sale_list, index) => (
             <CarouselItem
               key={index}
-              className="pb-4 flex flex-col justify-between shadow-none border-black items-center">
+              className="pb-4 justify-between block shadow-none border-black items-center">
               {sale_list.map((sale) => (
-                <div  className="flex gap-4 justify-between p-4 w-full mt-2 rounded-2xl bg-white/5 hover:bg-white/10 backdrop-blur-2xl border-black border-1">
+                <div  className="flex gap-4 items-center justify-between p-4 w-full mt-2 rounded-2xl bg-white/5 hover:bg-white/10 backdrop-blur-2xl border-black border-1">
                   <div>
                     <p>
                       <strong>Nome:</strong> {sale.nome}
