@@ -35,42 +35,47 @@ export function ModalSalesEdit({ sale, onClose, onSave }: Props) {
 
   return (
     <Dialog open onOpenChange={onClose}>
-      <DialogContent className="">
-      <DialogClose asChild>
-        <button className="absolute right-4 top-4 text-gray-500 hover:text-black">
-          <X className="w-5 h-5" />
-        </button>
-      </DialogClose>
+      <DialogContent className="bg-neutral-100">
         <DialogHeader>
           <DialogTitle className="text-2xl">Editar Venda</DialogTitle>
         </DialogHeader>
         <DialogDescription className="text-black">
           Sobrescreva os dados que você deseja editar.
         </DialogDescription>
-
-        <input
-          type="text"
-          name="nome"
-          value={salesData.nome}
-          onChange={handleChange}
-          className="border p-2 w-full mb-4"
-          placeholder="Nome da venda"
-        />
+        
+        <div className="">
+          <h3 className="text-sm underline mb-1">
+            <b>Nome</b> da venda
+          </h3>
+          <input
+            type="text"
+            name="nome"
+            value={salesData.nome}
+            onChange={handleChange}
+            className="border p-2 w-full mb-4 border-zinc-800"
+            placeholder="Nome da venda"
+            />
+        </div>
+        <div>
+        <h3 className="text-sm underline mb-1">
+          <b>Valor</b> da venda
+        </h3>
         <input
           type="number"
           name="valor"
           value={salesData.valor}
           onChange={handleChange}
-          className="border p-2 w-full mb-4"
+          className="border p-2 w-full mb-4 border-zinc-800"
           placeholder="Valor"
-        />
+          />
+        </div>
 
         <DialogFooter>
           <Button variant="outline" onClick={onClose}>
             <X className="w-4 h-4 mr-2" /> Cancelar
           </Button>
           <Button onClick={handleSubmit}>
-            <Check className="w-4 h-4 mr-2" /> Salvar
+            <Check className="w-4 h-4 mr-2" /> Editar
           </Button>
         </DialogFooter>
       </DialogContent>

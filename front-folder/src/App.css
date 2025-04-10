@@ -9,6 +9,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  user-select: none;
 }
 
 .logo {
@@ -41,6 +42,10 @@
 
 .card {
   padding: 2em;
+}
+
+button {
+  @apply transition-all duration-200 ease-in-out hover:scale-105;
 }
 
 .read-the-docs {
@@ -159,7 +164,8 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-image: url('./src/assets/background.jpg');
   }
 }
 
