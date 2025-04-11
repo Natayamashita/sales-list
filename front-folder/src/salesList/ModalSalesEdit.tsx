@@ -4,13 +4,14 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogClose,
   DialogFooter,
 } from "@/components/ui/dialog";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Venda } from "./types";
 import { Check, X } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { NumericFormat } from "react-number-format";
 
 type Props = {
   sale: Venda;
@@ -30,6 +31,7 @@ export function ModalSalesEdit({ sale, onClose, onSave }: Props) {
   };
 
   const handleSubmit = () => {
+    salesData.valor = salesData.valor.replace("R$ ", "").replace(/\./g, "").replace(",", ".");
     onSave(salesData);
   };
 
@@ -42,31 +44,37 @@ export function ModalSalesEdit({ sale, onClose, onSave }: Props) {
         <DialogDescription className="text-black">
           Sobrescreva os dados que você deseja editar.
         </DialogDescription>
-        
+
         <div className="">
-          <h3 className="text-sm underline mb-1">
+          <h3 className="pl-2 text-sm underline mb-1">
             <b>Nome</b> da venda
           </h3>
-          <input
+          <Input
             type="text"
             name="nome"
             value={salesData.nome}
             onChange={handleChange}
             className="border p-2 w-full mb-4 border-zinc-800"
             placeholder="Nome da venda"
-            />
+          />
         </div>
         <div>
-        <h3 className="text-sm underline mb-1">
-          <b>Valor</b> da venda
-        </h3>
-        <input
-          type="number"
-          name="valor"
-          value={salesData.valor}
-          onChange={handleChange}
-          className="border p-2 w-full mb-4 border-zinc-800"
-          placeholder="Valor"
+          <h3 className="pl-2 text-sm underline mb-1">
+            <b>Valor</b> da venda
+          </h3>
+          <NumericFormat
+            onChange={handleChange}
+            className="border p-2 w-full mb-4 border-zinc-800"
+            placeholder="R$ 0,00"
+            customInput={Input}
+            value={salesData.valor}
+            name="valor"
+            thousandSeparator="."
+            decimalSeparator=","
+            prefix="R$ "
+            decimalScale={2}
+            fixedDecimalScale
+            allowNegative={false}
           />
         </div>
 
