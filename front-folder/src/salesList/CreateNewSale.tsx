@@ -20,14 +20,26 @@ const CreateNewSale = () => {
 
   const navigate = useNavigate();
   const handleRegisterSale = () => {
-    if (name === "" || price === "") { 
+    if (name === "" || price === "") {
       toast.error("Preencha todos os campos.", {
-        duration: 1000
-      })
-      return
-    };
-    toast(`Nova venda gerada: ${name}, valor: ${price}.`, {
-      duration: 2000
+        unstyled: true,
+        className: "bg-neutral-700/80 rounded-xl w-full gap-4 flex items-center font-mono text-indigo-300 p-4 border-1 border-zinc-900",
+        duration: 1500,
+        position: `top-center`,
+      });
+      return;
+    }
+    toast("Venda registrada com sucesso!", {
+      unstyled: true,
+      className: "w-full bg-neutral-700/80 rounded-xl font-mono text-indigo-300 p-4 border-1 border-zinc-900",
+      description: (
+        <div className="w-full text-center justify-center text-md flex items-center">
+          <b>Nome:</b> <span>{name}</span>, <b>valor: </b> <span style={{ color: "green" }}> {price}</span>.
+        </div>
+      ),
+
+      duration: 2000,
+      position: `top-center`,
     });
     setTimeout(() => {
       navigate("/");
